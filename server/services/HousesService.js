@@ -5,6 +5,18 @@ import { BadRequest } from "../utils/Errors.js"
 
 class HousesService {
 
+async updateHouseById(houseId, houseData) {
+    const foundHouse = await this.getHouseById(houseId)
+    foundHouse.description = houseData.description || foundHouse.description
+    foundHouse.price = houseData.price || foundHouse.price
+    foundHouse.levels = houseData.levels || foundHouse.levels
+    foundHouse.bedrooms = houseData.bedrooms || foundHouse.bedrooms
+    foundHouse.bathrooms = houseData.bathrooms || foundHouse.bathrooms
+
+    await foundHouse.save()
+    return foundHouse
+}
+
 async getHouseById(houseId) {
     const house = await dbContext.Houses.findById(houseId)
     if (!house) {
