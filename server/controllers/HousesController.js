@@ -5,7 +5,7 @@ import BaseController from "../utils/BaseController.js";
 
 export class HousesController extends BaseController {
     constructor() {
-        super('api/cars')
+        super('api/houses')
         this.router
         .get('', this.getHouses)
     }
@@ -19,6 +19,16 @@ export class HousesController extends BaseController {
             const query = req.query
             const houses = await housesService.getHouses(query)
             res.send(houses)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getHouseById(req, res, next) {
+        try {
+            const houseId = req.params.houseId
+            const house = await housesService.getHouseById(houseId)
+            return res.send(house)
         } catch (error) {
             next(error)
         }
