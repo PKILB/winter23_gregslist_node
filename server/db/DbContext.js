@@ -9,6 +9,7 @@ class DbContext {
   Account = mongoose.model('Account', AccountSchema);
 
   Cars = mongoose.model('Car', CarSchema)
+  Houses = mongoose.model('House', HouseSchema)
 }
 
 export const dbContext = new DbContext()
