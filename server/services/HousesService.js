@@ -12,7 +12,11 @@ async getHouseById(houseId) {
     }
     return house
 }
-    
+
+async createHouse(houseData) {
+    const house = await dbContext.Houses.create(houseData)
+    return house
+}
 
 async getHouses(query) {
     const houses = await  dbContext.Houses.find(query)
