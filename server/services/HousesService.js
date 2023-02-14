@@ -17,6 +17,12 @@ async updateHouseById(houseId, houseData) {
     return foundHouse
 }
 
+async destroyHouseById(houseId) {
+    const house = await this.getHouseById(houseId)
+    await house.remove()
+    return house
+}
+
 async getHouseById(houseId) {
     const house = await dbContext.Houses.findById(houseId)
     if (!house) {
