@@ -9,6 +9,6 @@ export const HouseSchema = new Schema(
         description: { type: String, required: true, maxlength: 100,},
         bedrooms: {type: Number, required: true, min: 1, max: 6, default: 1 },
         bathrooms: {type: Number, required: true, min: 1, max: 6, default: 1 },
-    }
+    },
     {timestamps: true, toJSON: { virtuals: true} }
 )
